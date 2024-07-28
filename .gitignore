@@ -1,0 +1,65 @@
+# 编译生成的文件
+*.o
+*.a
+*.exe
+*.test
+*.out
+*.1
+*.pyc
+*.pyc[co]
+*.so
+*.dll
+*.dylib
+*.so[0-9]*
+*.dll[0-9]*
+*.lib
+*.sublime-workspace
+*.sublime-project.backup
+*.tmp
+*.pid
+*.seed
+*.pid.lock
+
+# 依赖目录
+vendor/
+
+# 跨平台文件，如Windows的Thumbs.db文件
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE和编辑器生成的文件
+.vscode/
+*.idea/
+*.DS_Store
+*.swp
+*.swo
+*.swn
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# 本地配置文件
+local_settings.py
+db.sqlite3
+
+# Go编译缓存
+*.go&#126;
+*.pkg
+*.modtime
+
+# Go编译生成的二进制文件
+bin/
+
+# 测试或开发过程中生成的数据
+testdata/
+
+# 编译过程中生成的其他文件
+*.coverage
+
+# 其他你希望Git忽略的文件或目录
+# 例如，日志目录、临时数据目录等
+logs/
+temp/
