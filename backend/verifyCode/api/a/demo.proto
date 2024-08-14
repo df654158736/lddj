@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package api.a;
+
+option go_package = "verifyCode/api/a;a";
+option java_multiple_files = true;
+option java_package = "api.a";
+
+service Demo {
+	rpc GetDemo (GetDemoRequest) returns (GetDemoReply);
+
+}
+
+
+message GetDemoRequest {string name = 1;}
+message GetDemoReply {string message = 1;}
+
