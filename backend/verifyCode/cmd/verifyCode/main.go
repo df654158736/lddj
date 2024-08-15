@@ -2,7 +2,9 @@ package main
 
 import (
 	"flag"
+	"math/rand"
 	"os"
+	"time"
 
 	"verifyCode/internal/conf"
 
@@ -80,6 +82,7 @@ func main() {
 	}
 	defer cleanup()
 
+	rand.Seed(time.Now().UnixNano()) // 随机数种子
 	// start and wait for stop signal
 	if err := app.Run(); err != nil {
 		panic(err)

@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"log"
+	"math/rand"
 
 	pb "verifyCode/api/s/v1"
 )
@@ -26,8 +27,34 @@ func (s *VerifyCodeService) DeleteVerifyCode(ctx context.Context, req *pb.Delete
 }
 func (s *VerifyCodeService) GetVerifyCode(ctx context.Context, req *pb.GetVerifyCodeRequest) (*pb.GetVerifyCodeReply, error) {
 	log.Println("GetVerifyCode")
-	return &pb.GetVerifyCodeReply{Message: "11"}, nil
+	return &pb.GetVerifyCodeReply{Message: mRandomCode(int(req.Length), req.Type)}, nil
 }
 func (s *VerifyCodeService) ListVerifyCode(ctx context.Context, req *pb.ListVerifyCodeRequest) (*pb.ListVerifyCodeReply, error) {
 	return &pb.ListVerifyCodeReply{}, nil
+}
+
+func mRandomCode(length int, tpye pb.Type) string {
+	// TODO
+	switch tpye {
+	case pb.Type_DEFAULT:
+		return ""
+	case pb.Type_DIGIT:
+		return mGetCode("0123456789", length)
+	case pb.Type_LETTER:
+		return mGetCode("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", length)
+	case pb.Type_MIXED:
+		return mGetCode("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", length)
+	}
+	return ""
+}
+
+func mGetCode(s string, length int) string {
+	charsLen := len(s)
+
+	result := make([]byte, length)
+	for i := 0; i < length; i++ {
+		randIndex := rand.Intn(charsLen)
+		result[i] = s[randIndex]
+	}
+	return string(result)
 }
