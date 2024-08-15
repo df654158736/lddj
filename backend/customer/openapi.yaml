@@ -42,6 +42,8 @@ components:
                     format: int32
                 message:
                     type: string
+                expireTime:
+                    type: string
         GetVerifyCodeRequest:
             type: object
             properties:

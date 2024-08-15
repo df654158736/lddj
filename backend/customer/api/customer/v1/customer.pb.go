@@ -21,386 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type CreateCustomerRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *CreateCustomerRequest) Reset() {
-	*x = CreateCustomerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CreateCustomerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateCustomerRequest) ProtoMessage() {}
-
-func (x *CreateCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateCustomerRequest.ProtoReflect.Descriptor instead.
-func (*CreateCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{0}
-}
-
-type CreateCustomerReply struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *CreateCustomerReply) Reset() {
-	*x = CreateCustomerReply{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *CreateCustomerReply) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateCustomerReply) ProtoMessage() {}
-
-func (x *CreateCustomerReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateCustomerReply.ProtoReflect.Descriptor instead.
-func (*CreateCustomerReply) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{1}
-}
-
-type UpdateCustomerRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *UpdateCustomerRequest) Reset() {
-	*x = UpdateCustomerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *UpdateCustomerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateCustomerRequest) ProtoMessage() {}
-
-func (x *UpdateCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateCustomerRequest.ProtoReflect.Descriptor instead.
-func (*UpdateCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{2}
-}
-
-type UpdateCustomerReply struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *UpdateCustomerReply) Reset() {
-	*x = UpdateCustomerReply{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *UpdateCustomerReply) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateCustomerReply) ProtoMessage() {}
-
-func (x *UpdateCustomerReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateCustomerReply.ProtoReflect.Descriptor instead.
-func (*UpdateCustomerReply) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{3}
-}
-
-type DeleteCustomerRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *DeleteCustomerRequest) Reset() {
-	*x = DeleteCustomerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DeleteCustomerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteCustomerRequest) ProtoMessage() {}
-
-func (x *DeleteCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteCustomerRequest.ProtoReflect.Descriptor instead.
-func (*DeleteCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{4}
-}
-
-type DeleteCustomerReply struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *DeleteCustomerReply) Reset() {
-	*x = DeleteCustomerReply{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *DeleteCustomerReply) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteCustomerReply) ProtoMessage() {}
-
-func (x *DeleteCustomerReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteCustomerReply.ProtoReflect.Descriptor instead.
-func (*DeleteCustomerReply) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{5}
-}
-
-type GetCustomerRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *GetCustomerRequest) Reset() {
-	*x = GetCustomerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetCustomerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetCustomerRequest) ProtoMessage() {}
-
-func (x *GetCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetCustomerRequest.ProtoReflect.Descriptor instead.
-func (*GetCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{6}
-}
-
-type GetCustomerReply struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *GetCustomerReply) Reset() {
-	*x = GetCustomerReply{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetCustomerReply) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetCustomerReply) ProtoMessage() {}
-
-func (x *GetCustomerReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetCustomerReply.ProtoReflect.Descriptor instead.
-func (*GetCustomerReply) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{7}
-}
-
-type ListCustomerRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *ListCustomerRequest) Reset() {
-	*x = ListCustomerRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ListCustomerRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCustomerRequest) ProtoMessage() {}
-
-func (x *ListCustomerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCustomerRequest.ProtoReflect.Descriptor instead.
-func (*ListCustomerRequest) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{8}
-}
-
-type ListCustomerReply struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *ListCustomerReply) Reset() {
-	*x = ListCustomerReply{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *ListCustomerReply) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ListCustomerReply) ProtoMessage() {}
-
-func (x *ListCustomerReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ListCustomerReply.ProtoReflect.Descriptor instead.
-func (*ListCustomerReply) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{9}
-}
-
 type GetVerifyCodeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -412,7 +32,7 @@ type GetVerifyCodeRequest struct {
 func (x *GetVerifyCodeRequest) Reset() {
 	*x = GetVerifyCodeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[10]
+		mi := &file_api_customer_v1_customer_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -425,7 +45,7 @@ func (x *GetVerifyCodeRequest) String() string {
 func (*GetVerifyCodeRequest) ProtoMessage() {}
 
 func (x *GetVerifyCodeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[10]
+	mi := &file_api_customer_v1_customer_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -438,7 +58,7 @@ func (x *GetVerifyCodeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVerifyCodeRequest.ProtoReflect.Descriptor instead.
 func (*GetVerifyCodeRequest) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{10}
+	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetVerifyCodeRequest) GetPhoneNumber() string {
@@ -456,12 +76,13 @@ type GetVerifyCodeReply struct {
 	VerifyCode string `protobuf:"bytes,1,opt,name=verify_code,json=verifyCode,proto3" json:"verify_code,omitempty"`
 	Code       int32  `protobuf:"varint,2,opt,name=code,proto3" json:"code,omitempty"`
 	Message    string `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
+	ExpireTime int64  `protobuf:"varint,4,opt,name=expire_time,json=expireTime,proto3" json:"expire_time,omitempty"`
 }
 
 func (x *GetVerifyCodeReply) Reset() {
 	*x = GetVerifyCodeReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_customer_v1_customer_proto_msgTypes[11]
+		mi := &file_api_customer_v1_customer_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -474,7 +95,7 @@ func (x *GetVerifyCodeReply) String() string {
 func (*GetVerifyCodeReply) ProtoMessage() {}
 
 func (x *GetVerifyCodeReply) ProtoReflect() protoreflect.Message {
-	mi := &file_api_customer_v1_customer_proto_msgTypes[11]
+	mi := &file_api_customer_v1_customer_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -487,7 +108,7 @@ func (x *GetVerifyCodeReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVerifyCodeReply.ProtoReflect.Descriptor instead.
 func (*GetVerifyCodeReply) Descriptor() ([]byte, []int) {
-	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{11}
+	return file_api_customer_v1_customer_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetVerifyCodeReply) GetVerifyCode() string {
@@ -511,6 +132,13 @@ func (x *GetVerifyCodeReply) GetMessage() string {
 	return ""
 }
 
+func (x *GetVerifyCodeReply) GetExpireTime() int64 {
+	if x != nil {
+		return x.ExpireTime
+	}
+	return 0
+}
+
 var File_api_customer_v1_customer_proto protoreflect.FileDescriptor
 
 var file_api_customer_v1_customer_proto_rawDesc = []byte{
@@ -518,70 +146,32 @@ var file_api_customer_v1_customer_proto_rawDesc = []byte{
 	0x31, 0x2f, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x12, 0x0b, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x1a, 0x1c, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x17, 0x0a, 0x15, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x22, 0x15, 0x0a, 0x13, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x75,
-	0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x17, 0x0a, 0x15, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x22, 0x15, 0x0a, 0x13, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x75,
-	0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x17, 0x0a, 0x15, 0x44,
-	0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x22, 0x15, 0x0a, 0x13, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x75,
-	0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x14, 0x0a, 0x12, 0x47,
-	0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x22, 0x12, 0x0a, 0x10, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x15, 0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x75, 0x73,
-	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x13, 0x0a, 0x11,
-	0x4c, 0x69, 0x73, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x39, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x43, 0x6f,
-	0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x68, 0x6f,
-	0x6e, 0x65, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x63, 0x0a, 0x12,
-	0x47, 0x65, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x70,
-	0x6c, 0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x76, 0x65, 0x72, 0x69, 0x66, 0x79, 0x5f, 0x63, 0x6f, 0x64,
-	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x76, 0x65, 0x72, 0x69, 0x66, 0x79, 0x43,
-	0x6f, 0x64, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61,
-	0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
-	0x65, 0x32, 0xb6, 0x04, 0x0a, 0x08, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x56,
-	0x0a, 0x0e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x12, 0x22, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x43,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e,
-	0x76, 0x31, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65,
-	0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x56, 0x0a, 0x0e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x22, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f,
-	0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x43, 0x75, 0x73,
-	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x63,
-	0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x56,
-	0x0a, 0x0e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x12, 0x22, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x44,
-	0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e,
-	0x76, 0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65,
-	0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x4d, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73,
-	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x1f, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65,
-	0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x50, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x75, 0x73,
-	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x20, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d,
-	0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d,
-	0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x80, 0x01, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x56,
-	0x65, 0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x21, 0x2e, 0x63, 0x75, 0x73, 0x74,
-	0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66,
-	0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x39, 0x0a, 0x14, 0x47,
+	0x65, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x68, 0x6f, 0x6e, 0x65, 0x5f, 0x6e, 0x75, 0x6d,
+	0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x68, 0x6f, 0x6e, 0x65,
+	0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x22, 0x84, 0x01, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x56, 0x65,
+	0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x1f, 0x0a,
+	0x0b, 0x76, 0x65, 0x72, 0x69, 0x66, 0x79, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0a, 0x76, 0x65, 0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x12,
+	0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x63, 0x6f,
+	0x64, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x1f, 0x0a, 0x0b,
+	0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0a, 0x65, 0x78, 0x70, 0x69, 0x72, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x32, 0x8d, 0x01,
+	0x0a, 0x08, 0x43, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x12, 0x80, 0x01, 0x0a, 0x0d, 0x47,
+	0x65, 0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x21, 0x2e, 0x63,
 	0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x56, 0x65,
-	0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2b, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x25, 0x3a, 0x01, 0x2a, 0x22, 0x20, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76,
-	0x31, 0x2f, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2f, 0x67, 0x65, 0x74, 0x2d, 0x76,
-	0x65, 0x72, 0x69, 0x66, 0x79, 0x2d, 0x63, 0x6f, 0x64, 0x65, 0x42, 0x2c, 0x0a, 0x0b, 0x63, 0x75,
-	0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x50, 0x01, 0x5a, 0x1b, 0x63, 0x75, 0x73,
-	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d,
-	0x65, 0x72, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x1f, 0x2e, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65,
+	0x74, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79,
+	0x22, 0x2b, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x25, 0x3a, 0x01, 0x2a, 0x22, 0x20, 0x2f, 0x61, 0x70,
+	0x69, 0x2f, 0x76, 0x31, 0x2f, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2f, 0x67, 0x65,
+	0x74, 0x2d, 0x76, 0x65, 0x72, 0x69, 0x66, 0x79, 0x2d, 0x63, 0x6f, 0x64, 0x65, 0x42, 0x2c, 0x0a,
+	0x0b, 0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x50, 0x01, 0x5a, 0x1b,
+	0x63, 0x75, 0x73, 0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x63, 0x75, 0x73,
+	0x74, 0x6f, 0x6d, 0x65, 0x72, 0x2f, 0x76, 0x31, 0x3b, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -596,39 +186,19 @@ func file_api_customer_v1_customer_proto_rawDescGZIP() []byte {
 	return file_api_customer_v1_customer_proto_rawDescData
 }
 
-var file_api_customer_v1_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_api_customer_v1_customer_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_api_customer_v1_customer_proto_goTypes = []any{
-	(*CreateCustomerRequest)(nil), // 0: customer.v1.CreateCustomerRequest
-	(*CreateCustomerReply)(nil),   // 1: customer.v1.CreateCustomerReply
-	(*UpdateCustomerRequest)(nil), // 2: customer.v1.UpdateCustomerRequest
-	(*UpdateCustomerReply)(nil),   // 3: customer.v1.UpdateCustomerReply
-	(*DeleteCustomerRequest)(nil), // 4: customer.v1.DeleteCustomerRequest
-	(*DeleteCustomerReply)(nil),   // 5: customer.v1.DeleteCustomerReply
-	(*GetCustomerRequest)(nil),    // 6: customer.v1.GetCustomerRequest
-	(*GetCustomerReply)(nil),      // 7: customer.v1.GetCustomerReply
-	(*ListCustomerRequest)(nil),   // 8: customer.v1.ListCustomerRequest
-	(*ListCustomerReply)(nil),     // 9: customer.v1.ListCustomerReply
-	(*GetVerifyCodeRequest)(nil),  // 10: customer.v1.GetVerifyCodeRequest
-	(*GetVerifyCodeReply)(nil),    // 11: customer.v1.GetVerifyCodeReply
+	(*GetVerifyCodeRequest)(nil), // 0: customer.v1.GetVerifyCodeRequest
+	(*GetVerifyCodeReply)(nil),   // 1: customer.v1.GetVerifyCodeReply
 }
 var file_api_customer_v1_customer_proto_depIdxs = []int32{
-	0,  // 0: customer.v1.Customer.CreateCustomer:input_type -> customer.v1.CreateCustomerRequest
-	2,  // 1: customer.v1.Customer.UpdateCustomer:input_type -> customer.v1.UpdateCustomerRequest
-	4,  // 2: customer.v1.Customer.DeleteCustomer:input_type -> customer.v1.DeleteCustomerRequest
-	6,  // 3: customer.v1.Customer.GetCustomer:input_type -> customer.v1.GetCustomerRequest
-	8,  // 4: customer.v1.Customer.ListCustomer:input_type -> customer.v1.ListCustomerRequest
-	10, // 5: customer.v1.Customer.GetVerifyCode:input_type -> customer.v1.GetVerifyCodeRequest
-	1,  // 6: customer.v1.Customer.CreateCustomer:output_type -> customer.v1.CreateCustomerReply
-	3,  // 7: customer.v1.Customer.UpdateCustomer:output_type -> customer.v1.UpdateCustomerReply
-	5,  // 8: customer.v1.Customer.DeleteCustomer:output_type -> customer.v1.DeleteCustomerReply
-	7,  // 9: customer.v1.Customer.GetCustomer:output_type -> customer.v1.GetCustomerReply
-	9,  // 10: customer.v1.Customer.ListCustomer:output_type -> customer.v1.ListCustomerReply
-	11, // 11: customer.v1.Customer.GetVerifyCode:output_type -> customer.v1.GetVerifyCodeReply
-	6,  // [6:12] is the sub-list for method output_type
-	0,  // [0:6] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	0, // 0: customer.v1.Customer.GetVerifyCode:input_type -> customer.v1.GetVerifyCodeRequest
+	1, // 1: customer.v1.Customer.GetVerifyCode:output_type -> customer.v1.GetVerifyCodeReply
+	1, // [1:2] is the sub-list for method output_type
+	0, // [0:1] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_api_customer_v1_customer_proto_init() }
@@ -638,126 +208,6 @@ func file_api_customer_v1_customer_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_api_customer_v1_customer_proto_msgTypes[0].Exporter = func(v any, i int) any {
-			switch v := v.(*CreateCustomerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[1].Exporter = func(v any, i int) any {
-			switch v := v.(*CreateCustomerReply); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[2].Exporter = func(v any, i int) any {
-			switch v := v.(*UpdateCustomerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[3].Exporter = func(v any, i int) any {
-			switch v := v.(*UpdateCustomerReply); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[4].Exporter = func(v any, i int) any {
-			switch v := v.(*DeleteCustomerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[5].Exporter = func(v any, i int) any {
-			switch v := v.(*DeleteCustomerReply); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[6].Exporter = func(v any, i int) any {
-			switch v := v.(*GetCustomerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[7].Exporter = func(v any, i int) any {
-			switch v := v.(*GetCustomerReply); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[8].Exporter = func(v any, i int) any {
-			switch v := v.(*ListCustomerRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[9].Exporter = func(v any, i int) any {
-			switch v := v.(*ListCustomerReply); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_api_customer_v1_customer_proto_msgTypes[10].Exporter = func(v any, i int) any {
 			switch v := v.(*GetVerifyCodeRequest); i {
 			case 0:
 				return &v.state
@@ -769,7 +219,7 @@ func file_api_customer_v1_customer_proto_init() {
 				return nil
 			}
 		}
-		file_api_customer_v1_customer_proto_msgTypes[11].Exporter = func(v any, i int) any {
+		file_api_customer_v1_customer_proto_msgTypes[1].Exporter = func(v any, i int) any {
 			switch v := v.(*GetVerifyCodeReply); i {
 			case 0:
 				return &v.state
@@ -788,7 +238,7 @@ func file_api_customer_v1_customer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_api_customer_v1_customer_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

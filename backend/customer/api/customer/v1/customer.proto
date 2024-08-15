@@ -9,11 +9,6 @@ option java_multiple_files = true;
 option java_package = "customer.v1";
 
 service Customer {
-	rpc CreateCustomer (CreateCustomerRequest) returns (CreateCustomerReply);
-	rpc UpdateCustomer (UpdateCustomerRequest) returns (UpdateCustomerReply);
-	rpc DeleteCustomer (DeleteCustomerRequest) returns (DeleteCustomerReply);
-	rpc GetCustomer (GetCustomerRequest) returns (GetCustomerReply);
-	rpc ListCustomer (ListCustomerRequest) returns (ListCustomerReply);
 	rpc GetVerifyCode (GetVerifyCodeRequest) returns (GetVerifyCodeReply)
 	{
 		option (google.api.http) = {
@@ -23,22 +18,6 @@ service Customer {
 	};
 }
 
-message CreateCustomerRequest {}
-message CreateCustomerReply {}
-
-message UpdateCustomerRequest {}
-message UpdateCustomerReply {}
-
-message DeleteCustomerRequest {}
-message DeleteCustomerReply {}
-
-message GetCustomerRequest {}
-message GetCustomerReply {}
-
-message ListCustomerRequest {}
-message ListCustomerReply {}
-
-
 message GetVerifyCodeRequest {
 	string phone_number = 1;
 }
@@ -46,4 +25,5 @@ message GetVerifyCodeReply {
 	string verify_code = 1;
 	int32 code = 2;
 	string message = 3;
+	int64 expire_time = 4;
 }
