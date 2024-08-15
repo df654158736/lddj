@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package customer.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "customer/api/customer/v1;v1";
+option java_multiple_files = true;
+option java_package = "customer.v1";
+
+service Customer {
+	rpc CreateCustomer (CreateCustomerRequest) returns (CreateCustomerReply);
+	rpc UpdateCustomer (UpdateCustomerRequest) returns (UpdateCustomerReply);
+	rpc DeleteCustomer (DeleteCustomerRequest) returns (DeleteCustomerReply);
+	rpc GetCustomer (GetCustomerRequest) returns (GetCustomerReply);
+	rpc ListCustomer (ListCustomerRequest) returns (ListCustomerReply);
+	rpc GetVerifyCode (GetVerifyCodeRequest) returns (GetVerifyCodeReply)
+	{
+		option (google.api.http) = {
+			post: "/api/v1/customer/get-verify-code",
+			body: "*"
+		};
+	};
+}
+
+message CreateCustomerRequest {}
+message CreateCustomerReply {}
+
+message UpdateCustomerRequest {}
+message UpdateCustomerReply {}
+
+message DeleteCustomerRequest {}
+message DeleteCustomerReply {}
+
+message GetCustomerRequest {}
+message GetCustomerReply {}
+
+message ListCustomerRequest {}
+message ListCustomerReply {}
+
+
+message GetVerifyCodeRequest {
+	string phone_number = 1;
+}
+message GetVerifyCodeReply {
+	string verify_code = 1;
+	int32 code = 2;
+	string message = 3;
+}
