@@ -1,0 +1,9 @@
+services:
+  redis:
+    image: "redis"
+    container_name: "LLDJredis"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data/redis:/data"
+
