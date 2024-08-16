@@ -65,4 +65,4 @@ logs/
 temp/
 
 # 数据目录
-/backend/data/
+/data/

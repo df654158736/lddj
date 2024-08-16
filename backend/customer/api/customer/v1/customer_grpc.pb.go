@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	Customer_GetVerifyCode_FullMethodName = "/customer.v1.Customer/GetVerifyCode"
+	Customer_Login_FullMethodName         = "/customer.v1.Customer/Login"
 )
 
 // CustomerClient is the client API for Customer service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CustomerClient interface {
 	GetVerifyCode(ctx context.Context, in *GetVerifyCodeRequest, opts ...grpc.CallOption) (*GetVerifyCodeReply, error)
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginReply, error)
 }
 
 type customerClient struct {
@@ -47,11 +49,22 @@ func (c *customerClient) GetVerifyCode(ctx context.Context, in *GetVerifyCodeReq
 	return out, nil
 }
 
+func (c *customerClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginReply)
+	err := c.cc.Invoke(ctx, Customer_Login_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CustomerServer is the server API for Customer service.
 // All implementations must embed UnimplementedCustomerServer
 // for forward compatibility.
 type CustomerServer interface {
 	GetVerifyCode(context.Context, *GetVerifyCodeRequest) (*GetVerifyCodeReply, error)
+	Login(context.Context, *LoginRequest) (*LoginReply, error)
 	mustEmbedUnimplementedCustomerServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedCustomerServer struct{}
 
 func (UnimplementedCustomerServer) GetVerifyCode(context.Context, *GetVerifyCodeRequest) (*GetVerifyCodeReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVerifyCode not implemented")
+}
+func (UnimplementedCustomerServer) Login(context.Context, *LoginRequest) (*LoginReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
 func (UnimplementedCustomerServer) mustEmbedUnimplementedCustomerServer() {}
 func (UnimplementedCustomerServer) testEmbeddedByValue()                  {}
@@ -104,6 +120,24 @@ func _Customer_GetVerifyCode_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Customer_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CustomerServer).Login(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Customer_Login_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CustomerServer).Login(ctx, req.(*LoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Customer_ServiceDesc is the grpc.ServiceDesc for Customer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var Customer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetVerifyCode",
 			Handler:    _Customer_GetVerifyCode_Handler,
+		},
+		{
+			MethodName: "Login",
+			Handler:    _Customer_Login_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
