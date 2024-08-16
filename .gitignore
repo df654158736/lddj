@@ -63,3 +63,6 @@ testdata/
 # 例如，日志目录、临时数据目录等
 logs/
 temp/
+
+# 数据目录
+/backend/data/
