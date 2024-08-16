@@ -1,9 +1,36 @@
 services:
   redis:
     image: "redis"
-    container_name: "LLDJredis"
+    container_name: "LDDJredis"
     ports:
       - "6379:6379"
     volumes:
       - "./data/redis:/data"
 
+  mysql:
+    image: "mysql:8.0"
+    container_name: "LDDJmysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "LDDJ_CUSTOMER"
+      MYSQL_USER: "LDDJ"
+      MYSQL_PASSWORD: "LDDJ"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./data/mysql:/var/lib/mysql"
+
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: "LLDJapp"
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on: ["redis", "mysql"]
+  #   environment:
+  #     REDIS_HOST: "redis"
+  #     MYSQL_HOST: "mysql"
+  #     MYSQL_USER: "LLDJ"
+  #     MYSQL_PASSWORD: "LLDJ"
+  #     MYSQL_DATABASE: "LLDJ"
