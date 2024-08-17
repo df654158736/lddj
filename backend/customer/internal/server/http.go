@@ -21,15 +21,19 @@ func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, customerServ
 		http.Middleware(
 			recovery.Recovery(),
 			//自己的中间件
-			selector.Server(jwt.Server(func(token *jwtv5.Token) (interface{}, error) {
-				return []byte("secret"), nil
-			})).Match(func(ctx context.Context, operation string) bool {
-				log.Info(operation)
+			selector.Server(
+				jwt.Server(func(token *jwtv5.Token) (interface{}, error) {
+					return []byte("secret"), nil
+				}),
+				jwtMiddleware(customerService),
+			).Match(func(ctx context.Context, operation string) bool {
+
 				whileOder := map[string]bool{
 					"/customer.v1.Customer/Login":         true,
-					"/customer.v1.Customer/GetVerifyCode": true,
+					"/customer.v1.Customer/GetVerifyCode": false,
 				}
 				flag := whileOder[operation]
+				println("operation: ", operation, "-flag: ", flag)
 				return !flag
 			}).Build(),
 		)}

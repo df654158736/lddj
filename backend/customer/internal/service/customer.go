@@ -9,18 +9,18 @@ import (
 
 type CustomerService struct {
 	pb.UnimplementedCustomerServer
-	customerRepo *data.CustomerRepo
+	CustomerRepo *data.CustomerRepo
 }
 
 func NewCustomerService(cr *data.CustomerRepo) *CustomerService {
 	return &CustomerService{
-		customerRepo: cr,
+		CustomerRepo: cr,
 	}
 }
 
 func (s *CustomerService) GetVerifyCode(ctx context.Context, req *pb.GetVerifyCodeRequest) (*pb.GetVerifyCodeReply, error) {
 	println("GetVerifyCode")
-	code, err := s.customerRepo.SetVerifyCode(req.PhoneNumber)
+	code, err := s.CustomerRepo.SetVerifyCode(req.PhoneNumber)
 	if err != nil {
 		return &pb.GetVerifyCodeReply{
 			Code:       400,
@@ -40,7 +40,7 @@ func (s *CustomerService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.
 	println(fmtStr)
 
 	// TODO: verify code
-	code := s.customerRepo.GetVerifyCode(req.PhoneNumber)
+	code := s.CustomerRepo.GetVerifyCode(req.PhoneNumber)
 	codeStr := fmt.Sprintf("code: %s", code)
 	println(codeStr)
 
@@ -52,7 +52,7 @@ func (s *CustomerService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.
 	}
 
 	// TODO: 用户是否存在
-	customer, err := s.customerRepo.GetCustomerByTelephone(req.PhoneNumber)
+	customer, err := s.CustomerRepo.GetCustomerByTelephone(req.PhoneNumber)
 	if err != nil {
 		return &pb.LoginReply{
 			Code:       400,
@@ -61,7 +61,7 @@ func (s *CustomerService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.
 	}
 
 	// TODO: 生成token
-	token, err := s.customerRepo.GenerateTokenAndSave(customer)
+	token, err := s.CustomerRepo.GenerateTokenAndSave(customer)
 	if err != nil {
 		return &pb.LoginReply{
 			Code:       400,

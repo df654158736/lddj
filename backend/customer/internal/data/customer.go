@@ -41,6 +41,16 @@ func (repo *CustomerRepo) GetVerifyCode(phoneNumber string) string {
 	return code.Val()
 }
 
+func (repo *CustomerRepo) GetToken(id string) (string, error) {
+	customer := &biz.Customer{}
+	result := repo.data.Mdb.Where("Id = ?", id).First(customer)
+	if result.Error == nil && result.RowsAffected > 0 {
+		return customer.Token, nil
+	}
+
+	return "", result.Error
+}
+
 func (repo *CustomerRepo) GetCustomerByTelephone(phoneNumber string) (*biz.Customer, error) {
 	// 实现根据手机号获取客户信息的逻辑
 	customer := &biz.Customer{}
