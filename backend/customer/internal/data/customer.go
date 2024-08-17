@@ -3,9 +3,14 @@ package data
 import (
 	"context"
 	"customer/internal/biz"
+	"database/sql"
+	"errors"
+	"fmt"
 	"time"
 
 	"github.com/go-kratos/kratos/v2/log"
+	"github.com/golang-jwt/jwt/v5"
+	"gorm.io/gorm"
 )
 
 type CustomerRepo struct {
@@ -45,5 +50,66 @@ func (repo *CustomerRepo) GetCustomerByTelephone(phoneNumber string) (*biz.Custo
 		return customer, nil
 	}
 
+	//如何customer没有找到，则创建一个新的customer
+	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		customer.Telephone = phoneNumber
+		createResult := repo.data.Mdb.Create(customer)
+		if createResult.Error == nil && createResult.RowsAffected > 0 {
+			return customer, nil
+		}
+		return nil, createResult.Error
+	}
+
 	return nil, result.Error
+}
+
+func (repo *CustomerRepo) GenerateTokenAndSave(customer *biz.Customer) (string, error) {
+	duration := 24 * time.Hour
+	log.Info(repo.log, "duration", duration)
+	secret := "secret"
+	log.Info(repo.log, "secret", secret)
+
+	//获取jwt token
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.RegisteredClaims{
+		//签发方，签发机构
+		Issuer: "DD",
+		//说明
+		Subject: "customer verification",
+		//签发给谁使用
+		Audience: []string{"customer"},
+		//签发时间
+		IssuedAt: jwt.NewNumericDate(time.Now()),
+		//何时启用
+		NotBefore: jwt.NewNumericDate(time.Now()),
+		//ID 标识
+		ID: fmt.Sprintf("%d", customer.ID),
+		//有效期至
+		ExpiresAt: jwt.NewNumericDate(time.Now().Add(duration)),
+	})
+	tokenString, err := token.SignedString([]byte(secret))
+	if err != nil {
+		return "", err
+	}
+	log.Info(repo.log, "token", tokenString)
+
+	//存储 jwt token
+	status := repo.data.Rdb.Set(context.Background(), "JWT:"+customer.Telephone, tokenString, duration)
+	if _, err := status.Result(); err != nil {
+		return "", err
+	}
+
+	//存储到mysql
+	customer.Token = tokenString
+	customer.TokenCreatedAt = sql.NullTime{Time: time.Now(), Valid: true}
+
+	sqlResult := repo.data.Mdb.Save(customer)
+	if sqlResult.Error != nil {
+		return "", sqlResult.Error
+	}
+
+	return tokenString, nil
+}
+func (repo *CustomerRepo) VerifyToken(tokenString string) (*biz.Customer, error) {
+	// 实现验证token的逻辑
+	return nil, nil
 }

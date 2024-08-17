@@ -52,7 +52,8 @@ func (s *CustomerService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.
 	}
 
 	// TODO: 用户是否存在
-	if _, err := s.customerRepo.GetCustomerByTelephone(req.PhoneNumber); err != nil {
+	customer, err := s.customerRepo.GetCustomerByTelephone(req.PhoneNumber)
+	if err != nil {
 		return &pb.LoginReply{
 			Code:       400,
 			Message:    err.Error(),
@@ -60,10 +61,17 @@ func (s *CustomerService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.
 	}
 
 	// TODO: 生成token
-	// token := s.customerRepo.GenerateToken(customer)
+	token, err := s.customerRepo.GenerateTokenAndSave(customer)
+	if err != nil {
+		return &pb.LoginReply{
+			Code:       400,
+			Message:    err.Error(),
+			ExpireTime: 60}, nil
+	}
 
 	return &pb.LoginReply{
 		Code:       200,
 		Message:    "Message",
+		Token:      token,
 		ExpireTime: 60}, nil
 }
