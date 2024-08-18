@@ -23,8 +23,7 @@ func NewCustomerService(cr *data.CustomerRepo) *CustomerService {
 }
 
 func (s *CustomerService) GetVerifyCode(ctx context.Context, req *pb.GetVerifyCodeRequest) (*pb.GetVerifyCodeReply, error) {
-	println("GetVerifyCode")
-	code, err := s.CustomerRepo.SetVerifyCode(req.PhoneNumber)
+	code, err := s.CustomerRepo.GetVerifyCodeGRPC(req.PhoneNumber, req.Length, int32(req.Type))
 	if err != nil {
 		return &pb.GetVerifyCodeReply{
 			Code:       400,

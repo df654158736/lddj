@@ -26,8 +26,9 @@ func (s *VerifyCodeService) DeleteVerifyCode(ctx context.Context, req *pb.Delete
 	return &pb.DeleteVerifyCodeReply{}, nil
 }
 func (s *VerifyCodeService) GetVerifyCode(ctx context.Context, req *pb.GetVerifyCodeRequest) (*pb.GetVerifyCodeReply, error) {
-	log.Println("GetVerifyCode")
-	return &pb.GetVerifyCodeReply{Message: mRandomCode(int(req.Length), req.Type)}, nil
+	code := mRandomCode(int(req.Length), req.Type)
+	log.Println("GetVerifyCode:", code)
+	return &pb.GetVerifyCodeReply{Message: code}, nil
 }
 func (s *VerifyCodeService) ListVerifyCode(ctx context.Context, req *pb.ListVerifyCodeRequest) (*pb.ListVerifyCodeReply, error) {
 	return &pb.ListVerifyCodeReply{}, nil

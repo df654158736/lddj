@@ -8,6 +8,13 @@ option go_package = "customer/api/customer/v1;v1";
 option java_multiple_files = true;
 option java_package = "customer.v1";
 
+enum Type {
+	DEFAULT = 0;
+	DIGIT = 1;
+	LETTER = 2;
+	MIXED = 3;
+}
+
 service Customer {
 	rpc GetVerifyCode (GetVerifyCodeRequest) returns (GetVerifyCodeReply)
 	{
@@ -35,6 +42,8 @@ service Customer {
 
 message GetVerifyCodeRequest {
 	string phone_number = 1;
+	int32 length = 2;
+	Type type = 3;
 }
 message GetVerifyCodeReply {
 	int32 code = 1;

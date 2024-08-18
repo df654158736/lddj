@@ -91,6 +91,12 @@ components:
             properties:
                 phoneNumber:
                     type: string
+                length:
+                    type: integer
+                    format: int32
+                type:
+                    type: integer
+                    format: enum
         GoogleProtobufAny:
             type: object
             properties:

@@ -7,7 +7,6 @@ services:
     volumes:
       - "../data/redis:/data"
     restart: always
-
   mysql:
     image: "mysql:8.0"
     container_name: "LDDJmysql"
@@ -21,7 +20,13 @@ services:
     volumes:
       - "../data/mysql:/var/lib/mysql"
     restart: always
-
+  consul:
+    image: "hashicorp/consul"
+    container_name: "LDDJconsul"
+    ports:
+      - "8500:8500"
+    command: agent -dev -client=0.0.0.0
+    restart: always
   # app:
   #   build:
   #     context: .
