@@ -10,6 +10,7 @@ import (
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/middleware/auth/jwt"
 	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/go-kratos/kratos/v2/transport/http"
 	jwtv5 "github.com/golang-jwt/jwt/v5"
 )
 
@@ -41,6 +42,27 @@ func jwtMiddleware(customerService *service.CustomerService) middleware.Middlewa
 				return nil, errors.Unauthorized("jwt token invalid", "token was updated")
 			}
 
+			return handler(ctx, req)
+		}
+	}
+}
+
+func corsMiddleware() middleware.Middleware {
+	return func(handler middleware.Handler) middleware.Handler {
+		return func(ctx context.Context, req interface{}) (interface{}, error) {
+			if tr, ok := transport.FromServerContext(ctx); ok {
+				ht := tr.(http.Transporter)
+				ht.ReplyHeader().Set("Access-Control-Allow-Origin", "*")
+				ht.ReplyHeader().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+				ht.ReplyHeader().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+				ht.ReplyHeader().Set("Access-Control-Max-Age", "86400")
+				ht.ReplyHeader().Set("Access-Control-Allow-Credentials", "true")
+
+				defer func() {
+
+				}()
+
+			}
 			return handler(ctx, req)
 		}
 	}

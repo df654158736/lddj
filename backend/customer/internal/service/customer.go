@@ -5,6 +5,10 @@ import (
 	pb "customer/api/customer/v1"
 	"customer/internal/data"
 	"fmt"
+
+	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/middleware/auth/jwt"
+	jwtv5 "github.com/golang-jwt/jwt/v5"
 )
 
 type CustomerService struct {
@@ -74,4 +78,28 @@ func (s *CustomerService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.
 		Message:    "Message",
 		Token:      token,
 		ExpireTime: 60}, nil
+}
+
+func (s *CustomerService) Logout(ctx context.Context, req *pb.LogoutRequest) (*pb.LogoutReply, error) {
+
+	claims, _ := jwt.FromContext(ctx)
+
+	//断言
+	claimsMap := claims.(jwtv5.MapClaims)
+	id := claimsMap["jti"].(string)
+
+	log.Info("Logout:", "customerId:", id)
+
+	err := s.CustomerRepo.DeleteTokenById(id)
+	if err != nil {
+		return &pb.LogoutReply{
+			Code:    400,
+			Message: err.Error(),
+		}, nil
+	} else {
+		return &pb.LogoutReply{
+			Code:    200,
+			Message: "Message",
+		}, nil
+	}
 }

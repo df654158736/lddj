@@ -24,6 +24,13 @@ service Customer {
 			body: "*"
 		};
 	};
+
+	rpc Logout(LogoutRequest) returns (LogoutReply)
+	{
+		option (google.api.http) = {
+			get: "/api/v1/customer/logout",
+		};
+	};
 }
 
 message GetVerifyCodeRequest {
@@ -45,4 +52,11 @@ message LoginReply {
 	string message = 2;
 	string token = 3;
 	int64 expire_time = 4;
+}
+
+message LogoutRequest {
+}
+message LogoutReply {
+	int32 code = 1;
+	string message = 2;
 }

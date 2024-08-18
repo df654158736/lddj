@@ -51,6 +51,24 @@ func (repo *CustomerRepo) GetToken(id string) (string, error) {
 	return "", result.Error
 }
 
+func (repo *CustomerRepo) DeleteTokenById(id string) error {
+	customer := &biz.Customer{}
+	result := repo.data.Mdb.Where("Id = ?", id).First(customer)
+	if result.Error == nil && result.RowsAffected > 0 {
+
+		customer.Token = ""
+		customer.TokenCreatedAt = sql.NullTime{Time: time.Time{}, Valid: false}
+		updateResult := repo.data.Mdb.Save(customer)
+		if updateResult.Error == nil && updateResult.RowsAffected > 0 {
+			return nil
+		} else {
+			return updateResult.Error
+		}
+	}
+
+	return result.Error
+}
+
 func (repo *CustomerRepo) GetCustomerByTelephone(phoneNumber string) (*biz.Customer, error) {
 	// 实现根据手机号获取客户信息的逻辑
 	customer := &biz.Customer{}

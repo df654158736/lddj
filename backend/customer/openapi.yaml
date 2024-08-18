@@ -54,6 +54,24 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
+    /api/v1/customer/logout:
+        get:
+            tags:
+                - Customer
+            operationId: Customer_Logout
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/LogoutReply'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
 components:
     schemas:
         GetVerifyCodeReply:
@@ -99,6 +117,14 @@ components:
                 phoneNumber:
                     type: string
                 verifyCode:
+                    type: string
+        LogoutReply:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    format: int32
+                message:
                     type: string
         Status:
             type: object

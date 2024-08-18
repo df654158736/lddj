@@ -20,7 +20,13 @@ func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, customerServ
 	var opts = []http.ServerOption{
 		http.Middleware(
 			recovery.Recovery(),
-			//自己的中间件
+			//跨域中间件
+			selector.Server(
+				corsMiddleware(),
+			).Match(func(ctx context.Context, operation string) bool {
+				return true
+			}).Build(),
+			//jwt中间件
 			selector.Server(
 				jwt.Server(func(token *jwtv5.Token) (interface{}, error) {
 					return []byte("secret"), nil
@@ -30,7 +36,7 @@ func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, customerServ
 
 				whileOder := map[string]bool{
 					"/customer.v1.Customer/Login":         true,
-					"/customer.v1.Customer/GetVerifyCode": false,
+					"/customer.v1.Customer/GetVerifyCode": true,
 				}
 				flag := whileOder[operation]
 				println("operation: ", operation, "-flag: ", flag)
