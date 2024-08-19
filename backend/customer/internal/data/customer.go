@@ -4,16 +4,14 @@ import (
 	"context"
 	verifycode "customer/api/verify_code"
 	"customer/internal/biz"
+	util "customer/internal/util"
 	"database/sql"
 	"errors"
 	"fmt"
 	"time"
 
-	consul "github.com/go-kratos/kratos/contrib/registry/consul/v2"
 	"github.com/go-kratos/kratos/v2/log"
-	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/golang-jwt/jwt/v5"
-	capi "github.com/hashicorp/consul/api"
 	"gorm.io/gorm"
 )
 
@@ -31,24 +29,8 @@ func NewCustomerRepo(data *Data, logger log.Logger) *CustomerRepo {
 }
 
 func (repo CustomerRepo) GetVerifyCodeGRPC(phone_number string, lenght int32, mtype int32) (string, error) {
-	//1，获取consul客户端
-	consulConfig := capi.DefaultConfig()
-
-	//通过配置文件拿到consul服务的地址
-	consulConfig.Address = "192.168.86.133:8500"
-	consulClient, err := capi.NewClient(consulConfig)
+	conn, err := util.GetGRPCConn()
 	if err != nil {
-		log.Fatal(err)
-	}
-
-	//2，获取服务发现管理器
-	discovery := consul.New(consulClient)
-
-	//连接grpc服务
-	endpoint := "discovery:///VerifyCodeService"
-	conn, err := grpc.DialInsecure(context.Background(), grpc.WithEndpoint(endpoint), grpc.WithDiscovery(discovery))
-	if err != nil {
-		println("1:", err)
 		return "", err
 	}
 
