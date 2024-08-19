@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package api.map.v1;
+
+option go_package = "map/api/map/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.map.v1";
+
+service Map {
+	rpc GetDrivingInfo (GetDrivingInfoRequest) returns (GetDrivingInfoReply);
+}
+
+message GetDrivingInfoRequest {
+	string origin = 1;
+	string destination = 2;
+}
+message GetDrivingInfoReply {
+	string origin = 1;
+	string destination = 2;
+	string distance = 3;
+	string duration = 4;
+}
