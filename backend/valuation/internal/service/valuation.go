@@ -22,13 +22,18 @@ func NewValuationService(vubiz *biz.ValuationUsecase) *ValuationService {
 func (s *ValuationService) GetEstimatePrice(ctx context.Context, req *pb.EstimatePriceRequest) (*pb.EstimatePriceReply, error) {
 	distance, duration, err := s.uc.GetDrivingInfo(ctx, req.Origin, req.Destination)
 	if err != nil {
-		fmt.Printf("GetEstimatePrice error: %v\n", err)
+		fmt.Printf("GetDrivingInfo error: %v\n", err)
+		return &pb.EstimatePriceReply{}, nil
+	}
+	price, err := s.uc.GetPrice(ctx, distance, duration)
+	if err != nil {
+		fmt.Printf("GetPrice error: %v\n", err)
 		return &pb.EstimatePriceReply{}, nil
 	}
 	return &pb.EstimatePriceReply{
 		Origin:      distance,
 		Destination: duration,
-		Price:       0,
+		Price:       price,
 		Code:        1,
 		Message:     "",
 	}, nil
