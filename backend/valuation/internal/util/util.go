@@ -5,6 +5,7 @@ import (
 	"log"
 
 	consul "github.com/go-kratos/kratos/contrib/registry/consul/v2"
+	"github.com/go-kratos/kratos/v2/middleware/tracing"
 	kgrpc "github.com/go-kratos/kratos/v2/transport/grpc"
 
 	capi "github.com/hashicorp/consul/api"
@@ -27,7 +28,7 @@ func GetGRPCConn(serviceName string) (*grpc.ClientConn, error) {
 
 	//连接grpc服务
 	endpoint := "discovery:///" + serviceName
-	conn, err := kgrpc.DialInsecure(context.Background(), kgrpc.WithEndpoint(endpoint), kgrpc.WithDiscovery(discovery))
+	conn, err := kgrpc.DialInsecure(context.Background(), kgrpc.WithEndpoint(endpoint), kgrpc.WithDiscovery(discovery), kgrpc.WithMiddleware(tracing.Client()))
 	if err != nil {
 		println("GetGRPCConn err:", err)
 		return nil, err
