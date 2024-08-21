@@ -29,6 +29,26 @@ services:
       - "8500:8500"
     command: agent -dev -client=0.0.0.0
     restart: always
+  jaeger:
+    image: "jaegertracing/all-in-one:latest"
+    container_name: "LDDJjaeger"
+    ports:
+      - "16686:16686"
+      - "14268:14268"
+      - "14269:14269"
+      - "14250:14250"
+      - "4317:4317"
+      - "4318:4318"
+      - "6831:6831"
+      - "6832:6832"
+      - "9411:9411"
+      - "5778:5778"
+    environment:
+      COLLECTOR_ZIPKIN_HOST_PORT: 9411
+      COLLECTOR_OTLP_ENABLED: "true"
+      # COLLECTOR_OTLP_PROTOCOL: "grpc"
+      # COLLECTOR_OTLP_ENDPOINT: "0.0.0.0:4317"
+    restart: always
   # app:
   #   build:
   #     context: .
