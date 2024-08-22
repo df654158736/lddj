@@ -32,7 +32,10 @@ func wireApp(confService *conf.Service, confServer *conf.Server, confData *conf.
 	greeterUsecase := biz.NewGreeterUsecase(greeterRepo, logger)
 	greeterService := service.NewGreeterService(greeterUsecase)
 	grpcServer := server.NewGRPCServer(confServer, greeterService, logger)
-	httpServer := server.NewHTTPServer(confServer, greeterService, logger)
+	driverRepo := data.NewDriverRepo(dataData, logger)
+	driverUsecase := biz.NewDriverUsecase(driverRepo, logger)
+	driverService := service.NewDriverService(driverUsecase)
+	httpServer := server.NewHTTPServer(confServer, driverService, greeterService, logger)
 	app := newApp(confService, logger, grpcServer, httpServer)
 	return app, func() {
 		cleanup()

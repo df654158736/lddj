@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package s.v1;
+
+option go_package = "verifyCode/api/s/v1;s";
+option java_multiple_files = true;
+option java_package = "s.v1";
+
+service VerifyCode {
+	rpc CreateVerifyCode (CreateVerifyCodeRequest) returns (CreateVerifyCodeReply);
+	rpc UpdateVerifyCode (UpdateVerifyCodeRequest) returns (UpdateVerifyCodeReply);
+	rpc DeleteVerifyCode (DeleteVerifyCodeRequest) returns (DeleteVerifyCodeReply);
+	rpc GetVerifyCode (GetVerifyCodeRequest) returns (GetVerifyCodeReply);
+	rpc ListVerifyCode (ListVerifyCodeRequest) returns (ListVerifyCodeReply);
+}
+
+enum Type {
+	DEFAULT = 0;
+	DIGIT = 1;
+	LETTER = 2;
+	MIXED = 3;
+}
+
+message CreateVerifyCodeRequest {}
+message CreateVerifyCodeReply {}
+
+message UpdateVerifyCodeRequest {}
+message UpdateVerifyCodeReply {}
+
+message DeleteVerifyCodeRequest {}
+message DeleteVerifyCodeReply {}
+
+message GetVerifyCodeRequest {
+	int32 length = 1;
+	Type type = 2;
+}
+message GetVerifyCodeReply {
+	string message = 1;
+}
+
+message ListVerifyCodeRequest {}
+message ListVerifyCodeReply {}
