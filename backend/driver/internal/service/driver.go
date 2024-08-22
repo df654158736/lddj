@@ -8,6 +8,10 @@ import (
 	pb "driver/api/driver/v1"
 	"driver/internal/biz"
 	"driver/internal/util"
+
+	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/middleware/auth/jwt"
+	jwtv5 "github.com/golang-jwt/jwt/v5"
 )
 
 type DriverService struct {
@@ -87,7 +91,26 @@ func (s *DriverService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Lo
 }
 
 func (s *DriverService) Logout(ctx context.Context, req *pb.LogoutRequest) (*pb.LogoutReply, error) {
-	return &pb.LogoutReply{}, nil
+	claims, _ := jwt.FromContext(ctx)
+
+	//断言
+	claimsMap := claims.(jwtv5.MapClaims)
+	id := claimsMap["jti"].(string)
+
+	log.Info("Logout:", "customerId:", id)
+
+	_, err := s.uc.Logout(id, "-1")
+	if err != nil {
+		return &pb.LogoutReply{
+			Code:    400,
+			Message: err.Error(),
+		}, nil
+	} else {
+		return &pb.LogoutReply{
+			Code:    200,
+			Message: "Message",
+		}, nil
+	}
 }
 
 func (s *DriverService) GetToken(id string) (string, error) {

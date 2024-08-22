@@ -42,6 +42,7 @@ type DriverRepo interface {
 	GetFromRedis(string) (string, error)
 	SaveToMysql(string, string) (*DriverModel, error)
 	GetModelByTelephone(string) (*DriverModel, error)
+	UpdateTokenToMysql(string, string) (*DriverModel, error)
 	GetTokenById(string) (string, error)
 }
 
@@ -74,6 +75,16 @@ func (uc *DriverUsecase) SaveToken(phone string, token string) (string, error) {
 	}
 
 	_, mysqlErr := uc.repo.SaveToMysql(phone, token)
+
+	if mysqlErr != nil {
+		return "", mysqlErr
+	}
+	return token, nil
+}
+
+func (uc *DriverUsecase) Logout(phone string, token string) (string, error) {
+
+	_, mysqlErr := uc.repo.UpdateTokenToMysql(phone, token)
 
 	if mysqlErr != nil {
 		return "", mysqlErr

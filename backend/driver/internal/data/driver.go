@@ -67,6 +67,29 @@ func (r *driverRepo) SaveToMysql(phone string, token string) (*biz.DriverModel, 
 	return nil, result.Error
 }
 
+// UpdateToMysql implements biz.DriverRepo.
+func (r *driverRepo) UpdateTokenToMysql(id string, token string) (*biz.DriverModel, error) {
+	model := &biz.DriverModel{}
+
+	result := r.data.Mdb.Where("Id = ?", id).First(model)
+	if result.Error == nil && result.RowsAffected > 0 {
+		// 如果token不为空，则更新token
+		if token != "" {
+			model.Token = sql.NullString{String: token, Valid: true}
+			updateResult := r.data.Mdb.Save(model)
+			if updateResult.Error == nil && updateResult.RowsAffected > 0 {
+				return model, nil
+			} else {
+				return nil, updateResult.Error
+			}
+		}
+
+		return model, nil
+	}
+
+	return nil, result.Error
+}
+
 func (repo *driverRepo) SaveToRedis(ctx context.Context, key string, content string, second int64) error {
 	expiration := time.Duration(second) * time.Second
 	status := repo.data.Rdb.Set(context.Background(), key, content, expiration)
