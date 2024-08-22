@@ -20,14 +20,23 @@ var _ = binding.EncodeURL
 const _ = http.SupportPackageIsVersion1
 
 const OperationDriverGetVerifyCode = "/driver.v1.Driver/GetVerifyCode"
+const OperationDriverLogin = "/driver.v1.Driver/Login"
+const OperationDriverLogout = "/driver.v1.Driver/Logout"
+const OperationDriverSubmitPhone = "/driver.v1.Driver/SubmitPhone"
 
 type DriverHTTPServer interface {
 	GetVerifyCode(context.Context, *GetVerifyCodeRequest) (*GetVerifyCodeReply, error)
+	Login(context.Context, *LoginRequest) (*LoginReply, error)
+	Logout(context.Context, *LogoutRequest) (*LogoutReply, error)
+	SubmitPhone(context.Context, *SubmitPhoneRequest) (*SubmitPhoneReply, error)
 }
 
 func RegisterDriverHTTPServer(s *http.Server, srv DriverHTTPServer) {
 	r := s.Route("/")
 	r.GET("/api/v1/GetVerifyCode", _Driver_GetVerifyCode0_HTTP_Handler(srv))
+	r.POST("/api/v1/SubmitPhone", _Driver_SubmitPhone0_HTTP_Handler(srv))
+	r.POST("/api/v1/Login", _Driver_Login0_HTTP_Handler(srv))
+	r.POST("/api/v1/Logout", _Driver_Logout0_HTTP_Handler(srv))
 }
 
 func _Driver_GetVerifyCode0_HTTP_Handler(srv DriverHTTPServer) func(ctx http.Context) error {
@@ -49,8 +58,77 @@ func _Driver_GetVerifyCode0_HTTP_Handler(srv DriverHTTPServer) func(ctx http.Con
 	}
 }
 
+func _Driver_SubmitPhone0_HTTP_Handler(srv DriverHTTPServer) func(ctx http.Context) error {
+	return func(ctx http.Context) error {
+		var in SubmitPhoneRequest
+		if err := ctx.Bind(&in); err != nil {
+			return err
+		}
+		if err := ctx.BindQuery(&in); err != nil {
+			return err
+		}
+		http.SetOperation(ctx, OperationDriverSubmitPhone)
+		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
+			return srv.SubmitPhone(ctx, req.(*SubmitPhoneRequest))
+		})
+		out, err := h(ctx, &in)
+		if err != nil {
+			return err
+		}
+		reply := out.(*SubmitPhoneReply)
+		return ctx.Result(200, reply)
+	}
+}
+
+func _Driver_Login0_HTTP_Handler(srv DriverHTTPServer) func(ctx http.Context) error {
+	return func(ctx http.Context) error {
+		var in LoginRequest
+		if err := ctx.Bind(&in); err != nil {
+			return err
+		}
+		if err := ctx.BindQuery(&in); err != nil {
+			return err
+		}
+		http.SetOperation(ctx, OperationDriverLogin)
+		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
+			return srv.Login(ctx, req.(*LoginRequest))
+		})
+		out, err := h(ctx, &in)
+		if err != nil {
+			return err
+		}
+		reply := out.(*LoginReply)
+		return ctx.Result(200, reply)
+	}
+}
+
+func _Driver_Logout0_HTTP_Handler(srv DriverHTTPServer) func(ctx http.Context) error {
+	return func(ctx http.Context) error {
+		var in LogoutRequest
+		if err := ctx.Bind(&in); err != nil {
+			return err
+		}
+		if err := ctx.BindQuery(&in); err != nil {
+			return err
+		}
+		http.SetOperation(ctx, OperationDriverLogout)
+		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
+			return srv.Logout(ctx, req.(*LogoutRequest))
+		})
+		out, err := h(ctx, &in)
+		if err != nil {
+			return err
+		}
+		reply := out.(*LogoutReply)
+		return ctx.Result(200, reply)
+	}
+}
+
 type DriverHTTPClient interface {
 	GetVerifyCode(ctx context.Context, req *GetVerifyCodeRequest, opts ...http.CallOption) (rsp *GetVerifyCodeReply, err error)
+	Login(ctx context.Context, req *LoginRequest, opts ...http.CallOption) (rsp *LoginReply, err error)
+	Logout(ctx context.Context, req *LogoutRequest, opts ...http.CallOption) (rsp *LogoutReply, err error)
+	SubmitPhone(ctx context.Context, req *SubmitPhoneRequest, opts ...http.CallOption) (rsp *SubmitPhoneReply, err error)
 }
 
 type DriverHTTPClientImpl struct {
@@ -68,6 +146,45 @@ func (c *DriverHTTPClientImpl) GetVerifyCode(ctx context.Context, in *GetVerifyC
 	opts = append(opts, http.Operation(OperationDriverGetVerifyCode))
 	opts = append(opts, http.PathTemplate(pattern))
 	err := c.cc.Invoke(ctx, "GET", path, nil, &out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (c *DriverHTTPClientImpl) Login(ctx context.Context, in *LoginRequest, opts ...http.CallOption) (*LoginReply, error) {
+	var out LoginReply
+	pattern := "/api/v1/Login"
+	path := binding.EncodeURL(pattern, in, false)
+	opts = append(opts, http.Operation(OperationDriverLogin))
+	opts = append(opts, http.PathTemplate(pattern))
+	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (c *DriverHTTPClientImpl) Logout(ctx context.Context, in *LogoutRequest, opts ...http.CallOption) (*LogoutReply, error) {
+	var out LogoutReply
+	pattern := "/api/v1/Logout"
+	path := binding.EncodeURL(pattern, in, false)
+	opts = append(opts, http.Operation(OperationDriverLogout))
+	opts = append(opts, http.PathTemplate(pattern))
+	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &out, nil
+}
+
+func (c *DriverHTTPClientImpl) SubmitPhone(ctx context.Context, in *SubmitPhoneRequest, opts ...http.CallOption) (*SubmitPhoneReply, error) {
+	var out SubmitPhoneReply
+	pattern := "/api/v1/SubmitPhone"
+	path := binding.EncodeURL(pattern, in, false)
+	opts = append(opts, http.Operation(OperationDriverSubmitPhone))
+	opts = append(opts, http.PathTemplate(pattern))
+	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -20,6 +20,9 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	Driver_GetVerifyCode_FullMethodName = "/driver.v1.Driver/GetVerifyCode"
+	Driver_SubmitPhone_FullMethodName   = "/driver.v1.Driver/SubmitPhone"
+	Driver_Login_FullMethodName         = "/driver.v1.Driver/Login"
+	Driver_Logout_FullMethodName        = "/driver.v1.Driver/Logout"
 )
 
 // DriverClient is the client API for Driver service.
@@ -27,6 +30,9 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DriverClient interface {
 	GetVerifyCode(ctx context.Context, in *GetVerifyCodeRequest, opts ...grpc.CallOption) (*GetVerifyCodeReply, error)
+	SubmitPhone(ctx context.Context, in *SubmitPhoneRequest, opts ...grpc.CallOption) (*SubmitPhoneReply, error)
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginReply, error)
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutReply, error)
 }
 
 type driverClient struct {
@@ -47,11 +53,44 @@ func (c *driverClient) GetVerifyCode(ctx context.Context, in *GetVerifyCodeReque
 	return out, nil
 }
 
+func (c *driverClient) SubmitPhone(ctx context.Context, in *SubmitPhoneRequest, opts ...grpc.CallOption) (*SubmitPhoneReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SubmitPhoneReply)
+	err := c.cc.Invoke(ctx, Driver_SubmitPhone_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *driverClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LoginReply)
+	err := c.cc.Invoke(ctx, Driver_Login_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *driverClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LogoutReply)
+	err := c.cc.Invoke(ctx, Driver_Logout_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DriverServer is the server API for Driver service.
 // All implementations must embed UnimplementedDriverServer
 // for forward compatibility.
 type DriverServer interface {
 	GetVerifyCode(context.Context, *GetVerifyCodeRequest) (*GetVerifyCodeReply, error)
+	SubmitPhone(context.Context, *SubmitPhoneRequest) (*SubmitPhoneReply, error)
+	Login(context.Context, *LoginRequest) (*LoginReply, error)
+	Logout(context.Context, *LogoutRequest) (*LogoutReply, error)
 	mustEmbedUnimplementedDriverServer()
 }
 
@@ -64,6 +103,15 @@ type UnimplementedDriverServer struct{}
 
 func (UnimplementedDriverServer) GetVerifyCode(context.Context, *GetVerifyCodeRequest) (*GetVerifyCodeReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVerifyCode not implemented")
+}
+func (UnimplementedDriverServer) SubmitPhone(context.Context, *SubmitPhoneRequest) (*SubmitPhoneReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitPhone not implemented")
+}
+func (UnimplementedDriverServer) Login(context.Context, *LoginRequest) (*LoginReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+}
+func (UnimplementedDriverServer) Logout(context.Context, *LogoutRequest) (*LogoutReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
 func (UnimplementedDriverServer) mustEmbedUnimplementedDriverServer() {}
 func (UnimplementedDriverServer) testEmbeddedByValue()                {}
@@ -104,6 +152,60 @@ func _Driver_GetVerifyCode_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Driver_SubmitPhone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubmitPhoneRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DriverServer).SubmitPhone(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Driver_SubmitPhone_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DriverServer).SubmitPhone(ctx, req.(*SubmitPhoneRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Driver_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DriverServer).Login(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Driver_Login_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DriverServer).Login(ctx, req.(*LoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Driver_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DriverServer).Logout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Driver_Logout_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DriverServer).Logout(ctx, req.(*LogoutRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Driver_ServiceDesc is the grpc.ServiceDesc for Driver service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +216,18 @@ var Driver_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetVerifyCode",
 			Handler:    _Driver_GetVerifyCode_Handler,
+		},
+		{
+			MethodName: "SubmitPhone",
+			Handler:    _Driver_SubmitPhone_Handler,
+		},
+		{
+			MethodName: "Login",
+			Handler:    _Driver_Login_Handler,
+		},
+		{
+			MethodName: "Logout",
+			Handler:    _Driver_Logout_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

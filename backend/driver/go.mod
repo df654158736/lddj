@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/go-kratos/kratos/contrib/registry/consul/v2 v2.0.0-20240819025634-57b961cba04c
 	github.com/go-kratos/kratos/v2 v2.8.0
+	github.com/golang-jwt/jwt/v5 v5.1.0
 	github.com/google/wire v0.6.0
 	github.com/hashicorp/consul/api v1.29.2
 	github.com/redis/go-redis/v9 v9.6.1

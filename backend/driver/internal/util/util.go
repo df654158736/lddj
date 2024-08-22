@@ -3,9 +3,11 @@ package util
 import (
 	"context"
 	"log"
+	"time"
 
 	consul "github.com/go-kratos/kratos/contrib/registry/consul/v2"
 	kgrpc "github.com/go-kratos/kratos/v2/transport/grpc"
+	"github.com/golang-jwt/jwt/v5"
 
 	capi "github.com/hashicorp/consul/api"
 	"google.golang.org/grpc"
@@ -34,4 +36,34 @@ func GetGRPCConn(endpoint string) (*grpc.ClientConn, error) {
 	}
 
 	return conn, nil
+}
+
+func GenerateJWTToken(user_id string) (string, error) {
+	duration := 24 * time.Hour
+	secret := "secret"
+
+	println("GenerateJWTTokenById：", user_id)
+
+	//获取jwt token
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.RegisteredClaims{
+		//签发方，签发机构
+		Issuer: "DD",
+		//说明
+		Subject: "customer verification",
+		//签发给谁使用
+		Audience: []string{"customer"},
+		//签发时间
+		IssuedAt: jwt.NewNumericDate(time.Now()),
+		//何时启用
+		NotBefore: jwt.NewNumericDate(time.Now()),
+		//ID 标识
+		ID: user_id,
+		//有效期至
+		ExpiresAt: jwt.NewNumericDate(time.Now().Add(duration)),
+	})
+	tokenString, err := token.SignedString([]byte(secret))
+	if err != nil {
+		return "", err
+	}
+	return tokenString, nil
 }

@@ -32,7 +32,7 @@ func NewData(c *conf.Data, logger log.Logger) (*Data, func(), error) {
 		log.NewHelper(logger).Info("closing the data resources")
 	}
 	//连接redis
-	redisURL := fmt.Sprintf("redis://%s/2?dial_timeout=3s", c.Redis.Addr)
+	redisURL := fmt.Sprintf("redis://%s/1?dial_timeout=3s", c.Redis.Addr)
 	options, err := redis.ParseURL(redisURL)
 	if err != nil {
 		data.Rdb = nil

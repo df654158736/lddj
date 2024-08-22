@@ -11,6 +11,27 @@ service Driver {
 			get: "/api/v1/GetVerifyCode",
 		};
     };
+
+	rpc SubmitPhone (SubmitPhoneRequest) returns (SubmitPhoneReply){
+        option (google.api.http) = {
+			post: "/api/v1/SubmitPhone",
+			body:"*"
+		};
+    };
+
+	rpc Login (LoginRequest) returns (LoginReply){
+        option (google.api.http) = {
+			post: "/api/v1/Login",
+			body:"*"
+		};
+    };
+
+	rpc Logout (LogoutRequest) returns (LogoutReply){
+        option (google.api.http) = {
+			post: "/api/v1/Logout",
+			body:"*"
+		};
+    };
 }
 
 enum Type {
@@ -29,3 +50,29 @@ message GetVerifyCodeReply {
     string message = 2;
 }
 
+message SubmitPhoneRequest {
+    string phone = 1;
+}
+message SubmitPhoneReply {
+	int64 code = 1;
+    string message = 2;
+	string status = 3;
+}
+
+message LoginRequest {
+	string phone_number = 1;
+	string verify_code = 2;
+}
+message LoginReply {
+	int32 code = 1;
+	string message = 2;
+	string token = 3;
+	int64 expire_time = 4;
+}
+
+message LogoutRequest {
+}
+message LogoutReply {
+	int32 code = 1;
+	string message = 2;
+}
