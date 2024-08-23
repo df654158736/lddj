@@ -82,9 +82,9 @@ func (uc *DriverUsecase) SaveToken(phone string, token string) (string, error) {
 	return token, nil
 }
 
-func (uc *DriverUsecase) Logout(phone string, token string) (string, error) {
+func (uc *DriverUsecase) Logout(id string, token string) (string, error) {
 
-	_, mysqlErr := uc.repo.UpdateTokenToMysql(phone, token)
+	_, mysqlErr := uc.repo.UpdateTokenToMysql(id, token)
 
 	if mysqlErr != nil {
 		return "", mysqlErr

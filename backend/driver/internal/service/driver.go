@@ -122,3 +122,10 @@ func (s *DriverService) GetToken(id string) (string, error) {
 	}
 	return token, nil
 }
+func (s *DriverService) GetDriverInfo(ctx context.Context, phoneNumber string) (*biz.DriverModel, error) {
+	model, err := s.uc.GetModelByTelephone(phoneNumber)
+	if err != nil {
+		return nil, err
+	}
+	return model, nil
+}

@@ -42,6 +42,12 @@ func jwtMiddleware(service *service.DriverService) middleware.Middleware {
 				return nil, errors.Unauthorized("jwt token invalid", "token was updated")
 			}
 
+			// 记录登录司机的信息
+			// driver,err:=service.GetDriverInfo(ctx,)
+			ctxWithDriver := context.WithValue(ctx, "driver_id", id)
+			sdriverID, ok := ctxWithDriver.Value("driver_id").(string)
+			println("记录登录司机的信息:" + sdriverID)
+
 			return handler(ctx, req)
 		}
 	}
